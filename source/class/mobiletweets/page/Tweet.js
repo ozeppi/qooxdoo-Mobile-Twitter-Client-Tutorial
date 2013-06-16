@@ -5,7 +5,7 @@ qx.Class.define('mobiletweets.page.Tweet', {
         this.set({
             title: 'Details',
             showBackButton: true,
-            backButtonText: 'Back'
+            backButtonText: '戻る'
         });
     },
     properties: {

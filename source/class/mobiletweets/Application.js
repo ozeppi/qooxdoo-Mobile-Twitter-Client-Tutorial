@@ -69,7 +69,8 @@ qx.Class.define("mobiletweets.Application",
         manager.addDetail(tweetsPage);
         inputPage.addListener('requestTweet', function(evt) {
             this.setUsername(evt.getData());
-            //be careful about this position
+            //addListenerで遅延させる & setUsernameの後でないとtitleに
+            //nullがsetされるというエラーが出るのがハマりポイント
             this.bind('tweets', tweetsPage, 'tweets');
             this.bind('username', tweetsPage, 'title');
             tweetsPage.show();
