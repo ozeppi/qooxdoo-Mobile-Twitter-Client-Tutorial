@@ -33,7 +33,15 @@ qx.Class.define('mobiletweets.page.Tweets', {
                 }
             });
             this.bind('tweets', list, 'model');
+            list.addListener('changeSelection', this.__onChangeSelection, this);
             this.getContent().add(list);
+        },
+        __onChangeSelection: function(evt) {
+            var index = evt.getData();
+            this.fireDataEvent('showTweet', index);
         }
+    },
+    events: {
+        showTweet: 'qx.event.type.Data'
     }
 });

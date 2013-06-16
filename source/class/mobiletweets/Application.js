@@ -78,6 +78,19 @@ qx.Class.define("mobiletweets.Application",
         tweetsPage.addListener('back', function(evt){
             inputPage.show({reverse:true});
         }, this);
+
+        var tweetPage = new mobiletweets.page.Tweet();
+        manager.addDetail(tweetPage);
+
+        tweetPage.addListener('back', function(evt){
+            tweetsPage.show({reverse:true});
+        }, this);
+
+        tweetsPage.addListener('showTweet', function(evt){
+            var index = evt.getData();
+            tweetPage.setTweet(this.getTweets().getItem(index));
+            tweetPage.show();
+        }, this);
     },
     __loadTweets: function() {
       var url = "http://identi.ca/api/statuses/user_timeline/" + this.getUsername() + ".json";
